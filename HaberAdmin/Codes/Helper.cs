@@ -8,14 +8,22 @@ namespace HaberAdmin.Codes
     public class Helper
     {
 
-        public static bool MobilKontrol()
+        public static string NullStrKontrol(string txt)
         {
-            if (HttpContext.Current.Request.Browser.IsMobileDevice)
-                return true;
+            if (!string.IsNullOrEmpty(txt))
+            {
+                txt = txt;
+            }
             else
-                return false;
+            {
+                txt = "";
+            }
+
+
+            return txt;
 
         }
+
         public static string ImgSec_Durum(string txt)
         {
             txt = txt == "1" ? "<img src=\"/static/icons/tick.png\" width=\"20\"/>" : "<img src=\"/static/icons/wrong.png\" width=\"20\"/>";

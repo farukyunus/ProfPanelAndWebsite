@@ -3,6 +3,8 @@
 <%@ Register Src="~/W-WUC/UC_MansetUzeriHaber.ascx" TagPrefix="uc1" TagName="UC_MansetUzeriHaber" %>
 <%@ Register Src="~/W-WUC/UC_MansetAltiHaber.ascx" TagPrefix="uc1" TagName="UC_MansetAltiHaber" %>
 <%@ Register Src="~/W-WUC/UC_SurmansetHaber.ascx" TagPrefix="uc1" TagName="UC_SurmansetHaber" %>
+<%@ Register Src="~/W-WUC/UC_AnasayfaKategoriler.ascx" TagPrefix="uc1" TagName="UC_AnasayfaKategoriler" %>
+
 
 
 
@@ -59,108 +61,8 @@
         <uc1:UC_SurmansetHaber runat="server" ID="UC_SurmansetHaber" />
 
         <!--GÜNDEM HABERLERİ-->
-
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://foto.haberler.com/manset/2020/05/03/barca-da-bir-donem-sona-eriyor-koronavirus_13185199_68_k.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">Barça'da bir dönem sona eriyor! Koronavirüs nedeniyle yollar ayrılıyor</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://foto.haberler.com/manset/2020/05/03/2-milyon-lira-odenerek-kentteki-veresiye_13185241_36_k.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">2 milyon lira ödenerek kentteki veresiye defterleri satın alındı</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card-deck mt-3">
-                    <div class="card br-close">
-                        <img class="card-img-top br-close img-cvr" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text hd-cards">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+        <uc1:UC_AnasayfaKategoriler runat="server" ID="UC_AnasayfaKategoriler" />
+        
         <!--GÜNDEM HABERLERİ END-->
 
 

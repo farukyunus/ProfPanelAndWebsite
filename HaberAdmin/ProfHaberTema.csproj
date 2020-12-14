@@ -940,6 +940,7 @@
     <Content Include="W-static\js\bootstrap.min.js" />
     <Content Include="W-static\js\jquery-3.4.1.min.js" />
     <Content Include="W-static\js\swiper.min.js" />
+    <Content Include="W-WUC\UC_AnasayfaKategoriler.ascx" />
     <Content Include="W-WUC\UC_MansetAltiHaber.ascx" />
     <Content Include="W-WUC\UC_MansetUzeriHaber.ascx" />
     <Content Include="W-WUC\UC_SurmansetHaber.ascx" />
@@ -989,6 +990,7 @@
     <Compile Include="ajax\AjxKullaniciIslem.aspx.designer.cs">
       <DependentUpon>AjxKullaniciIslem.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Codes\Data\AnasayfaKategoriHaberleri.cs" />
     <Compile Include="Codes\Data\MansetHaberleri.cs" />
     <Compile Include="Codes\Helper.cs" />
     <Compile Include="Haberler\Default.aspx.cs">
@@ -1061,6 +1063,13 @@
     </Compile>
     <Compile Include="W-SiteMaster.Master.designer.cs">
       <DependentUpon>W-SiteMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="W-WUC\UC_AnasayfaKategoriler.ascx.cs">
+      <DependentUpon>UC_AnasayfaKategoriler.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="W-WUC\UC_AnasayfaKategoriler.ascx.designer.cs">
+      <DependentUpon>UC_AnasayfaKategoriler.ascx</DependentUpon>
     </Compile>
     <Compile Include="W-WUC\UC_MansetAltiHaber.ascx.cs">
       <DependentUpon>UC_MansetAltiHaber.ascx</DependentUpon>

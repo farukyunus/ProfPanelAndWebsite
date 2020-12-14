@@ -56,5 +56,14 @@ namespace HaberAdmin.W_Anasayfa {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::HaberAdmin.W_WUC.UC_SurmansetHaber UC_SurmansetHaber;
+        
+        /// <summary>
+        /// UC_AnasayfaKategoriler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::HaberAdmin.W_WUC.UC_AnasayfaKategoriler UC_AnasayfaKategoriler;
     }
 }
