@@ -742,6 +742,21 @@
     object-position: 100% 0;
     width: 100%;
 }
+
+.img-cvr-detay {
+    object-fit: cover;
+    object-position: 100% 0;
+    width: 100%;
+    
+}
 .b-guncel {
     border-color: #ff4136;
 }
+.br-cls {
+     border-bottom: 4px solid #ff4136;
+}
+a.linkstyle {
+    text-decoration: none;
+    color: black;
+}
+.minh-80{min-height:80px;}

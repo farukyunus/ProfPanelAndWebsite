@@ -15,8 +15,7 @@ namespace HaberAdmin.W_WUC
     public partial class UC_AnasayfaKategoriler : System.Web.UI.UserControl
     {
         SqlConnection bgl;
-        public List<AnasayfaKategoriHaberleri> AKHListe = new List<AnasayfaKategoriHaberleri>();
-        public int habersira = 0;
+        public List<HaberListe> AKHListe = new List<HaberListe>();
         protected void Page_Load(object sender, EventArgs e)
         {
             bgl = new SqlConnection();
@@ -26,6 +25,7 @@ namespace HaberAdmin.W_WUC
             kmt.Connection = bgl;
             bgl.Open();
             kmt.CommandText = "W_SP_AnasayfaKategoriHaberleriGetir";
+            kmt.Parameters.AddWithValue("KatUrl", "guncel");
             kmt.CommandType = CommandType.StoredProcedure;
             SqlDataReader dr = kmt.ExecuteReader();
 
@@ -37,7 +37,7 @@ namespace HaberAdmin.W_WUC
             {
                 while (dr.Read())
                 {
-                    AnasayfaKategoriHaberleri AKH = new AnasayfaKategoriHaberleri//SQL kayıtları içinde dönerken listenin içini dolduruyorum, .add diyerek yine aynı tipteki listenin (AKHListe) içine ekliyorum kayıtları.
+                    HaberListe AKH = new HaberListe//SQL kayıtları içinde dönerken listenin içini dolduruyorum, .add diyerek yine aynı tipteki listenin (AKHListe) içine ekliyorum kayıtları.
                     {
                         HaberBaslik = Helper.NullStrKontrol(dr["HaberBaslik"].ToString()),
                         HaberID =  Convert.ToInt32(dr["id"]),
@@ -55,6 +55,7 @@ namespace HaberAdmin.W_WUC
                         KategoriID = Convert.ToInt32(dr["KategoriID"]),
                         Kaydeden = Helper.NullStrKontrol(dr["Kaydeden"].ToString()),
                         MansetBaslik = Helper.NullStrKontrol(dr["MansetBaslik"].ToString()),
+                        Haber_Url = dr["HaberUrl"].ToString(),
                         SeoHaberi = Convert.ToInt32(dr["SeoHaberi"])
 
                     };

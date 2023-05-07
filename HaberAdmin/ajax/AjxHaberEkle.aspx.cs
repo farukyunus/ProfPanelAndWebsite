@@ -8,6 +8,8 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Text.RegularExpressions;
+using HaberAdmin.Codes;
 
 namespace HaberAdmin.ajax
 {
@@ -24,8 +26,10 @@ namespace HaberAdmin.ajax
         public int EtkilenenKayit = 0;
         public string Guncel_Haber_ID = string.Empty;
         public string KategoriAdi = string.Empty;
+        public string KategoriAdi_Url = string.Empty;
         public string Konum = string.Empty;
         public string Kaydeden = string.Empty;
+        public string FarkliKaydet = string.Empty;
         SqlConnection bgl;
 
         
@@ -42,17 +46,20 @@ namespace HaberAdmin.ajax
 
             ArananID = Request.Form["idArama"];
             HaberAra();
-            HaberBaslik = Request.Form["HaberBaslik"];
+            HaberBaslik = Request.Form["HaberBaslik"].Trim();
             HaberOzet = Request.Form["HaberOzet"];
-            HaberMetin = Request.Form["ctl00$ContentPlaceHolder1$CKEditorControl1"].ToString();
+            HaberMetin = ImageDuzenle(Request.Form["ctl00$ContentPlaceHolder1$CKEditorControl1"].ToString());
             EmbedVideo = Request.Form["video_embed"];
+            EmbedVideo = IframeDuzenle(EmbedVideo);
+
             KategoriAdi = Request.Form["inputGroupSelectKategori"];
+            KategoriAdi_Url = Codes.Helper.ToURL(KategoriAdi);
             Konum = Request.Form["inputGroupSelectKonum"];
             MansetBaslik = Request.Form["MansetBaslik"];
 
             //Response.Write(KategoriAdi + "-"+ Konum);
             //Response.End();
-
+            FarkliKaydet = Request.Form["chkF_Kaydet"];
             HaberResim = Request.Files[0].FileName.ToString();
             MansetResim = Request.Files[1].FileName.ToString();
             Guncel_Haber_ID = Request.Form["rq_txt"].ToString();
@@ -75,14 +82,19 @@ namespace HaberAdmin.ajax
                 MansetResim = "/foto/manset-resimleri/" + MansetResim + "";
 
             }
-            HaberGuncelle();
+
+            if (string.IsNullOrEmpty(FarkliKaydet))
+            {
+                HaberGuncelle();
+
+            }
 
             SqlCommand kmt = new SqlCommand();
             kmt.Connection = bgl;
             bgl.Open();
             kmt.CommandText = "SP_YeniHaberEkle";
             kmt.CommandType = CommandType.StoredProcedure;
-            kmt.Parameters.AddWithValue("@HaberBaslik", HaberBaslik);
+            kmt.Parameters.AddWithValue("@HaberBaslik", HaberBaslik.Trim());
             kmt.Parameters.AddWithValue("@HaberOzet", HaberOzet);
             kmt.Parameters.AddWithValue("@HaberMetin", HaberMetin);
             kmt.Parameters.AddWithValue("@EmbedVideo", EmbedVideo);
@@ -179,6 +191,7 @@ namespace HaberAdmin.ajax
                 kmt_HaberGuncelle.Parameters.AddWithValue("@HaberMansetResimUrl", MansetResim);
                 kmt_HaberGuncelle.Parameters.AddWithValue("@HaberKonum", Konum);
                 kmt_HaberGuncelle.Parameters.AddWithValue("@HaberKategori", KategoriAdi);
+                kmt_HaberGuncelle.Parameters.AddWithValue("@Kategori_Url", Helper.ToURL(KategoriAdi_Url));
                 kmt_HaberGuncelle.Parameters.AddWithValue("@MansetBaslik", MansetBaslik);
 
 
@@ -195,5 +208,47 @@ namespace HaberAdmin.ajax
 
 
         }
+
+        public string IframeDuzenle(string txt)//Iframe içindeki width değerini replace etmek için yapıldı. 
+        {
+
+            if (!string.IsNullOrEmpty(txt))
+            {
+                MatchCollection ifrm = Regex.Matches(txt, "<iframe(.|\n)*?</iframe>");
+                foreach (Match v in ifrm)
+                {
+                    Regex regex_src = new Regex("width=\".*?\"|width='.*?'");
+                    Match match_src = regex_src.Match(v.ToString());
+                    if (match_src.Success)
+                    {
+                       txt = txt.Replace(match_src.Value, "width=\"100%\"");
+                    }
+                }
+            }
+
+            return txt;
+
+        }
+        public string ImageDuzenle(string txt)//Image içindeki width değerini replace etmek için yapıldı. 
+        {
+
+            if (!string.IsNullOrEmpty(txt))
+            {
+                MatchCollection img = Regex.Matches(txt, "<img(.|\n)*?/>");
+                foreach (Match v in img)
+                {
+                    Regex regex_src = new Regex("width=\".*?\"|width='.*?'");
+                    Match match_src = regex_src.Match(v.ToString());
+                    if (match_src.Success)
+                    {
+                        txt = txt.Replace(match_src.Value, "width=\"100%\"");
+                    }
+                }
+            }
+
+            return txt;
+
+        }
+
     }
 }

@@ -3,7 +3,10 @@
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
     <title>Haber Ekle</title>
+
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
 
 </asp:Content>
@@ -26,6 +29,15 @@
                                             <button id="btnYayindanKaldir" name="btnYayindanKaldir" type="button" class="btn btn-danger">Yayından Kaldır</button>
                                             <h5 class="mt-4"><%="Haber ID: " + vtHaberID %></h5>
                                             <%} %>
+
+                                            
+                                            <%if (!string.IsNullOrEmpty(message))
+                                                {%>
+                                            <div class="alert alert-success" role="alert">
+                                            <div class="<%=type %>" role="alert"><%=message %></div>
+                                                </div>
+                                            <%} %>
+                                            
 
                                             <%if(vtAktifKontrol == 0 && !string.IsNullOrEmpty(ArananID))
                                                 {%>
@@ -72,7 +84,7 @@
                                                             </div>
                                                             <div class="col-lg-4">
                                                                <div class="mb-3">
-                                                                <button title="Manşete özel başlık oluşturmak için kullanabilirsiniz." type="button" id="mansetbaslikclick" class="btn btn-warning pl-3"><strong>Manşet başlığı oluştur</strong></button>
+                                                                <button title="Manşete özel başlık oluşturmak için kullanabilirsiniz." type="button" id="mansetbaslikclick" class="btn btn-warning pl-3"><strong>Manşet Başlığı</strong></button>
                                                             </div>
                                                                 </div>
                                                         </div>
@@ -85,7 +97,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="small mb-1 font-weight-bold">Haber Başlığı</label>
-                                                            <textarea rows="1" class="form-control textBaslik" name="HaberBaslik" id="HaberBaslik" placeholder="Haber Başlığı"></textarea>
+                                                            <textarea rows="2" class="form-control textBaslik" name="HaberBaslik" id="HaberBaslik" placeholder="Haber Başlığı"></textarea>
                                                         </div>
 
                                                         
@@ -170,16 +182,19 @@
                                                 <%--<div  style="display:none;"></div>--%>
 
                                                 <div class="form-group mt-4 mb-0 col-md-2 pl-0">
-                                                    <input class="btn btn-primary btn-block" type="submit" value="Kaydet / Güncelle" runat="server">
+                                                    <input class="btn btn-primary btn-block w-auto" type="submit" value="Kaydet / Güncelle" runat="server">
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input mb-2" type="checkbox" value="farkli_kaydet" id="chkF_Kaydet" name="chkF_Kaydet">
+                                                        <label class="form-check-label" for="chkF_Kaydet">
+                                                            Farklı Kaydet 
+                                                        </label>
+                                                    </div>
+
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="col-md-5">
-                                            <%if (!string.IsNullOrEmpty(message))
-                                                {%>
-                                            <div class="<%=type %>" role="alert"><%=message %></div>
-                                            <%} %>
-                                        </div>
+                                        
                                     </div>
 
                                 </div>
@@ -214,7 +229,7 @@
             font-weight: 500;
         }
     </style>
-    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/ckeditor.js?v=2"></script>
 
     <script>
         $(document).ready(function () {

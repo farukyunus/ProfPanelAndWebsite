@@ -131,7 +131,7 @@ namespace HaberAdmin.Haberler
 
                 else if (msg == "ok")
                 {
-                    message = "\"" + vtHaberBaslik + "\"" + " - Haber Kaydedildi.";
+                    message = "<b>Başarılı : </b> " + vtHaberBaslik + "" + " <b>ID</b> : " +vtHaberID;
                     type = "uyari-ok";
                 }
 

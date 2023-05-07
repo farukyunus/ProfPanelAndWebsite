@@ -12,130 +12,48 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-
-        <%if (!mobil) {%>
+        <%if (!mobil)
+            {%>
         <uc1:UC_MansetUzeriHaber runat="server" ID="UC_MansetUzeriHaber" />
         <%} %>
-        <div class="row">
 
+        <!--MANSET-->
+        <div class="row">
             <div class="col-lg-8 mt-3">
                 <!-- Swiper -->
-
                 <div class="swip-anamanset">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <asp:Repeater ID="Rptr_Manset" runat="server">
-                                <ItemTemplate>
-                                    <div class="swiper-slide">
-                                        <div class="manset-title-left-center"><%# !string.IsNullOrEmpty(Eval("MansetBaslik").ToString()) ? Eval("MansetBaslik") : Eval("HaberBaslik")  %></div>
-                                        <img src="<%# !string.IsNullOrEmpty(Eval("HaberMansetResimUrl").ToString()) ? Eval("HaberMansetResimUrl") : Eval("HaberResimUrl")  %>"
-                                            class="img-fluid img-cvr-mnst" />
-                                    </div>
-                            </ItemTemplate>
-                            </asp:Repeater>
+                            <%foreach (var item in Anamanset)
+                                {%>
+                            <div class="swiper-slide">
+                                <a href="<%=item.Haber_Url %>" title="<%=item.HaberBaslik %>">
+                                    <div class="manset-title-left-center"><%= !string.IsNullOrEmpty(item.MansetBaslik) ? item.MansetBaslik : item.HaberBaslik  %></div>
+                                    <img src="<%= !string.IsNullOrEmpty(item.HaberMansetResimUrl) ? item.HaberMansetResimUrl : item.HaberResimUrl  %>"
+                                        class="img-fluid img-cvr-mnst" alt="<%=item.HaberBaslik %>"/>
+                                </a>
+                            </div>
+                            <%} %>
                         </div>
-
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
-
-
                     </div>
                 </div>
-
-
             </div>
             <div class="col-lg-4">
-
                 <div class="manset-sag-reklam mt-3">
                 </div>
-
             </div>
         </div>
+        <!--MANSET END-->
 
-        <%if (mobil){%>
+        <%if (mobil)
+            {%>
         <uc1:UC_MansetUzeriHaber runat="server" ID="UC_MansetUzeriHaber1" />
         <%} %>
-
-        <uc1:UC_MansetAltiHaber runat="server" id="UC_MansetAltiHaber" />
-
+        <uc1:UC_MansetAltiHaber runat="server" ID="UC_MansetAltiHaber" />
         <uc1:UC_SurmansetHaber runat="server" ID="UC_SurmansetHaber" />
-
-        <!--GÜNDEM HABERLERİ-->
         <uc1:UC_AnasayfaKategoriler runat="server" ID="UC_AnasayfaKategoriler" />
-        
-        <!--GÜNDEM HABERLERİ END-->
-
-
-        <div class="row mt-3">
-
-            <div class="col-lg-12">
-                <div class="arabaslik b-galeri">
-                    Fotogaleri
-                </div>
-
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-lg-12">
-                <!-- Swiper -->
-
-                <div class="swiper-container-fg">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide fg-img">
-
-                            <div class="fg-title fg-bg">İstanbul'da çakan şimşekler geceyi gündüze çevirdi</div>
-                            <img class="img-fluid h-250" src="https://foto.haberler.com/galeri/2019/08/08/fenerbahce-cagliari-macinda-dikkat-ceken-detay-715418_8826_1_b.jpg" alt="Card image cap">
-                        </div>
-
-                        <div class="swiper-slide fg-img">
-
-                            <div class="fg-title fg-bg">Aşk 101'in güzelleri güzeli Burcu öğretmeni paylaşımlarıyla sosyal medyayı sallıyor</div>
-                            <img class="img-fluid h-250" src="https://foto.haberler.com/galeri/2020/05/02/guzellik-organlarinin-yerini-degistirdiler-iste-717726_3151_7_b.jpg"
-                                alt="Card image cap">
-                        </div>
-                        <div class="swiper-slide fg-img">
-
-                            <div class="fg-title fg-bg">Gagasından iç organlarına kadar her şeyiyle siyah olan özel tavuk: Ayam Cemani</div>
-                            <img class="img-fluid h-250" src="https://foto.haberler.com/galeri/2020/05/02/gagasindan-ic-organlarina-kadar-her-seyiyle-siyah-717725_150_3_b.jpg"
-                                alt="Card image cap">
-                        </div>
-                        <div class="swiper-slide fg-img">
-
-                            <div class="fg-title fg-bg">Natural lead-in to additional content. To additional</div>
-                            <img class="img-fluid h-250" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg" alt="Card image cap">
-                        </div>
-
-                        <div class="swiper-slide fg-img">
-
-                            <div class="fg-title fg-bg">This card has supporting text below as a natural lead-in to additional content.</div>
-                            <img class="img-fluid h-250" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg"
-                                alt="Card image cap">
-                        </div>
-
-                        <div class="swiper-slide fg-img">
-
-                            <div class="fg-title fg-bg">This card has supporting text below as a natural lead-in to additional content.</div>
-                            <img class="img-fluid h-250" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg"
-                                alt="Card image cap">
-                        </div>
-
-                        <div class="swiper-slide fg-img">
-
-                            <div class="fg-title fg-bg">This card has supporting text below as a natural lead-in to additional content.</div>
-                            <img class="img-fluid h-250" src="https://cdn-amk.sozcu.com.tr/amk-resimler/2020/05/iecrop/depophotos_16678324_16_9_1588403107-480x270.jpg"
-                                alt="Card image cap">
-                        </div>
-
-                    </div>
-
-                    <div class="swiper-button-next np-col"></div>
-                    <div class="swiper-button-prev np-col"></div>
-
-                </div>
-
-            </div>
-        </div>
-
 
 
 

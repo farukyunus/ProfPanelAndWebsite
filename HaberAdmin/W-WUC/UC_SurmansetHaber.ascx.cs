@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HaberAdmin.Codes.Data;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,6 +15,7 @@ namespace HaberAdmin.W_WUC
     {
         SqlConnection bgl;
         public bool mobil = false;
+        public List<HaberListe> Surmanset = new List<HaberListe>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.Browser.IsMobileDevice)
@@ -29,15 +31,35 @@ namespace HaberAdmin.W_WUC
             kmt.CommandType = CommandType.StoredProcedure;
             SqlDataReader dr = kmt.ExecuteReader();
 
-            if (mobil)
+
+            if (dr.HasRows)
             {
-                Rptr_Surmanset_Mobil.DataSource = dr;
-                Rptr_Surmanset_Mobil.DataBind();
-            }
-            else
-            {
-                Rptr_Surmanset.DataSource = dr;
-                Rptr_Surmanset.DataBind();
+                while (dr.Read())
+                {
+                    HaberListe sm = new HaberListe
+                    {
+                        HaberBaslik = dr["HaberBaslik"].ToString(),
+                        HaberID = Convert.ToInt32(dr["id"]),
+                        AnasayfadaGorun = Convert.ToInt32(dr["AnasayfadaGorun"]),
+                        EmbedVideo = dr["EmbedVideo"].ToString(),
+                        Goruntulenme = Convert.ToInt32(dr["Goruntulenme"]),
+                        HaberKonum = dr["HaberKonum"].ToString(),
+                        HaberKutuResimUrl = dr["HaberKutuResimUrl"].ToString(),
+                        HaberMansetResimUrl = dr["HaberMansetResimUrl"].ToString(),
+                        HaberMetin = dr["HaberMetin"].ToString(),
+                        HaberOzet = dr["HaberOzet"].ToString(),
+                        HaberResimUrl = dr["HaberResimUrl"].ToString(),
+                        HaberTarih = Convert.ToDateTime(dr["HaberTarih"]),
+                        KategoriAdi = dr["KategoriAdi"].ToString(),
+                        KategoriID = Convert.ToInt32(dr["KategoriID"]),
+                        Kaydeden = dr["Kaydeden"].ToString(),
+                        MansetBaslik = dr["MansetBaslik"].ToString(),
+                        Haber_Url = dr["HaberUrl"].ToString(),
+                        SeoHaberi = Convert.ToInt32(dr["SeoHaberi"])
+
+                    };
+                    Surmanset.Add(sm);
+                }
             }
 
             bgl.Close();

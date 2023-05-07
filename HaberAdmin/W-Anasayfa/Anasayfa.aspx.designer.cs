@@ -22,15 +22,6 @@ namespace HaberAdmin.W_Anasayfa {
         protected global::HaberAdmin.W_WUC.UC_MansetUzeriHaber UC_MansetUzeriHaber;
         
         /// <summary>
-        /// Rptr_Manset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Rptr_Manset;
-        
-        /// <summary>
         /// UC_MansetUzeriHaber1 control.
         /// </summary>
         /// <remarks>

@@ -11,14 +11,5 @@ namespace HaberAdmin.W_WUC {
     
     
     public partial class UC_MansetUzeriHaber {
-        
-        /// <summary>
-        /// Rptr_Mansetuzeri control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Rptr_Mansetuzeri;
     }
 }
